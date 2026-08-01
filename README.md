@@ -9,7 +9,9 @@ python3 -m venv venv               # create a virtual environment
 source venv/bin/activate           # activate it
 pip install --upgrade pip          # upgrade pip inside venv
 pip install "kagglehub[pandas-datasets]"
+```
 
 ## Download the dataset
 ```bash
 python3 download_data.py
+```
