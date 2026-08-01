@@ -34,12 +34,12 @@ public class Stock {
 		// Add symbol column for each file in raw_data_dir, and write the result to data_dir
 		Path dir = Paths.get(raw_data_dir);
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
-			for (Path entry : stream) {
-				try (BufferedReader reader = Files.newBufferedReader(entry)) {
-					Path outFile = Paths.get(data_dir, entry.getFileName().toString());
-					try (BufferedWriter writer = Files.newBufferedWriter(outFile)) {
-						writer.write("Symbol,Date,Open,High,Low,Close,Adj Close,Volume");
-						writer.newLine();
+			Path outFile = Paths.get(data_dir, "all.csv");
+			try (BufferedWriter writer = Files.newBufferedWriter(outFile)) {
+				writer.write("Symbol,Date,Open,High,Low,Close,Adj Close,Volume");
+				writer.newLine();
+				for (Path entry : stream) {
+					try (BufferedReader reader = Files.newBufferedReader(entry)) {
 						String line;
 						boolean isHeader = true;
 						while ((line = reader.readLine()) != null) {
