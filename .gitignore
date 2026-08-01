@@ -1,4 +1,6 @@
 *.class
+*.log
+*.jar
 sp-500-stock-prices/
 sp-500-stock-prices-clean/
 tmp/
