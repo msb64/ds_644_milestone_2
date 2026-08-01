@@ -34,12 +34,7 @@ public class Stock {
 		// Add symbol column for each file in raw_data_dir, and write the result to data_dir
 		Path dir = Paths.get(raw_data_dir);
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
-			int i = 0;
 			for (Path entry : stream) {
-				i++;
-				if (i > 2) {
-					break;
-				}
 				try (BufferedReader reader = Files.newBufferedReader(entry)) {
 					Path outFile = Paths.get(data_dir, entry.getFileName().toString());
 					try (BufferedWriter writer = Files.newBufferedWriter(outFile)) {
