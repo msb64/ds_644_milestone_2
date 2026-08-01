@@ -1,6 +1,7 @@
 # How to download the dataset:
 
 ## Install pip packages
+```bash
 sudo apt update
 sudo apt upgrade -y
 sudo apt install python3-venv -y   # make sure venv is available
@@ -10,4 +11,5 @@ pip install --upgrade pip          # upgrade pip inside venv
 pip install "kagglehub[pandas-datasets]"
 
 ## Download the dataset
+```bash
 python3 download_data.py
