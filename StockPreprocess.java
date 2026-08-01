@@ -46,7 +46,12 @@ public class Stock {
 						writer.write("Symbol,Date,Open,High,Low,Close,Adj Close,Volume");
 						writer.newLine();
 						String line;
+						boolean isHeader = true;
 						while ((line = reader.readLine()) != null) {
+							if (isHeader) {
+								isHeader = false;
+								continue;
+							}
 							String symbol = entry.getFileName().toString().split("\\.")[0];
 							writer.write(symbol + "," + line);
 							writer.newLine();
