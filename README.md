@@ -34,5 +34,7 @@ python3 download_data.py
 ```
 
 # How to run the MapReduce job
+```bash
 ./preprocess.sh
 ./mapreduce.sh 2>&1 | tee mapreduce.log
+```
