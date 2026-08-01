@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Stock {
@@ -24,23 +25,23 @@ public class Stock {
 
 		// Create data_dir
 		try {
-			java.nio.file.Path data_path = Paths.get(data_dir);
+			Path data_path = Paths.get(data_dir);
 			Files.createDirectories(data_path);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		// Add symbol column for each file in raw_data_dir, and write the result to data_dir
-		java.nio.file.Path dir = Paths.get(raw_data_dir);
-		try (DirectoryStream<java.nio.file.Path> stream = Files.newDirectoryStream(dir)) {
+		Path dir = Paths.get(raw_data_dir);
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
 			int i = 0;
-			for (java.nio.file.Path entry : stream) {
+			for (Path entry : stream) {
 				i++;
 				if (i > 2) {
 					break;
 				}
 				try (BufferedReader reader = Files.newBufferedReader(entry)) {
-					java.nio.file.Path outFile = Paths.get(data_dir, entry.getFileName().toString());
+					Path outFile = Paths.get(data_dir, entry.getFileName().toString());
 					try (BufferedWriter writer = Files.newBufferedWriter(outFile)) {
 						writer.write("Symbol,Date,Open,High,Low,Close,Adj Close,Volume");
 						writer.newLine();
