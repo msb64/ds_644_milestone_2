@@ -1,5 +1,5 @@
-# This script has been helpful for me to configure my Hadoop environment
-#
+# This script has been helpful for me to configure my Hadoop environment, ONLY AT INITIAL SETUP
+
 set -eux
 
 for _host in slave1 slave2 slave3; do
